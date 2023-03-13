@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import Arr from '../Arr';
 import { selectSearch } from '../redux/slices/searchSlice';
 
@@ -17,9 +19,11 @@ const TextArea: React.FC = () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Подробнее
-            </button>
+            <Link to={`/e/${result.number}`}>
+              <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Подробнее
+              </button>
+            </Link>
           </div>
         </div>
       ) : (
