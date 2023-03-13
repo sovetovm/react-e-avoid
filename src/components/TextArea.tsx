@@ -1,27 +1,32 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import Arr from '../Arr';
+import { selectSearch } from '../redux/slices/searchSlice';
 
 const TextArea: React.FC = () => {
+  const searchValue = useSelector(selectSearch);
+  const result = Arr.find((obj) => obj.number === searchValue.search);
   return (
     <div>
-      <div className="flex justify-center mt-4">
-        <div className="mx-4 mt-8 w-4/6 text-center">
-          <p className="text-gray-800 leading-6 ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id purus id mauris
-            congue volutpat. Aliquam porttitor erat sit amet turpis eleifend, sit amet faucibus
-            magna auctor. Integer vel metus vel sem bibendum sodales eu ac turpis. Sed blandit ipsum
-            in augue dignissim, non gravida sapien feugiat. Vestibulum ante ipsum primis in faucibus
-            orci luctus et ultrices posuere cubilia Curae; Aliquam sit amet tortor eu tellus laoreet
-            pulvinar. Donec sed placerat nisi, sed hendrerit felis. Aenean iaculis neque enim, at
-            auctor odio hendrerit eget. Sed tristique sollicitudin euismod. In hac habitasse platea
-            dictumst. Suspendisse potenti.
-          </p>
+      {result ? (
+        <div>
+          <div className="flex justify-center mt-4">
+            <div className="mx-4 mt-8 w-4/6 text-center">
+              <b className="bg-red-400 p-2">{result.danger}</b>
+              <p className="text-gray-800 leading-6 mt-4">{result.brief}</p>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Подробнее
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center">
-        <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Подробнее
-        </button>
-      </div>
+      ) : (
+        <p className="text-gray-800 leading-6 mt-4 text-center">
+          Введите номер добавки в поле поиска выше
+        </p>
+      )}
     </div>
   );
 };
