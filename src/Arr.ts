@@ -888,8 +888,7 @@ const Arr: IArr[] = [
     number: '249',
     danger: 'ОПАСНО',
     brief: '',
-    description:
-      'git flow как работает. github flow. cicd? Как делать code review в пул реквест. BitBucket. Jeero. PWA. Firebase/ firestore. ',
+    description: '',
   },
 ];
 
